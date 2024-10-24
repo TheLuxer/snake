@@ -29,9 +29,9 @@ class SerieNavidad
             }  
 
         } 
-    void Encender()
+    void Encender(int noFocos)
         {
-
+        
         int decremento=noFocos; 
         for (auto &&foco : focos)
             {

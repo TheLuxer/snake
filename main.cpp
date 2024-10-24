@@ -21,11 +21,12 @@ int main (int argc, char const *argv[])
         //Celula
         serie1.Alternar(estado);
         lienzo.Dibujar(serie1);
+
         estado = estado ? false: true;
 
         //Incremento
         serie2.Apagar(); 
-        serie2.Encender(5); 
+        serie2.Encender(incremento); 
         incremento++; 
         lienzo.Dibujar(serie2);
 
