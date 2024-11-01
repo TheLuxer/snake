@@ -16,21 +16,32 @@ int main(int argc, char const *argv[])
 
     while (true)
     {
-        auto can = Canvas(200,200);
-        can.DrawPointLine(10 + frame, 30, 30 + frame, 30);
-        can.DrawPointLine(10 + frame, 30, 10 + frame, 15);
-        can.DrawPointLine(30 + frame, 30, 30 + frame, 15);
-        can.DrawPointLine(10 + frame, 15, 20 + frame, 5);
-        can.DrawPointLine(20 + frame, 5, 30 + frame, 15);
+        auto can = Canvas(50,50);
+        //Casa
+        can.DrawPointLine(10, 30, 30, 30);
+        can.DrawPointLine(10, 30, 10, 15);
+        can.DrawPointLine(30, 30, 30, 15);
+        can.DrawPointLine(10, 15, 20, 5);
+        can.DrawPointLine(20, 5, 30, 15);
 
-        if (frame % 2 == 0) {
-            can.DrawPointLine(18 + frame, 30, 18 + frame, 25);
+        //Puerta
+        if (frame % 2 == 0)
+        {
+            can.DrawPointLine(22, 30, 22, 25);
+        } else
+        {
+            can.DrawPointLine(18, 30, 18, 25);
+            can.DrawPointLine(22, 30, 22, 25);
+            can.DrawPointLine(18, 25, 22, 25);
         }
-        can.DrawPointLine(22 + frame, 30, 22 + frame, 25);
-        can.DrawPointLine(18 + frame, 25, 22 + frame, 25);
 
-        can.DrawPointCircle(5 + frame, 35, 1);
+        //Human
+        int human = (frame % 50);
+        can.DrawPointCircle(human, 35, 1);
 
+        //Sol
+        int sun = (frame % 50);
+        can.DrawPointCircle(sun, 5, 3);
 
         Screen pantalla = Screen::Create(Dimension::Full(), Dimension::Full());
         Element lienzo = bgcolor(Color::Blue,canvas(&can));
@@ -38,7 +49,7 @@ int main(int argc, char const *argv[])
         std::cout << reset_position;
         pantalla.Print();
         reset_position = pantalla.ResetPosition(true);
-        this_thread::sleep_for(0.2s);
+        this_thread::sleep_for(0.3s);
         frame++;
     }
 
